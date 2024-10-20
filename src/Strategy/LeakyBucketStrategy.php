@@ -3,6 +3,7 @@ namespace PHPRateLimiter\Strategy;
 
 use PHPRateLimiter\Storage\RateLimiterStorageInterface;
 
+// 进入漏桶的请求才会被处理
 class LeakyBucketStrategy implements RateLimitStrategyInterface {
     public function isAllowed(
         string $key, int $limit, int $interval, int $currentCount, RateLimiterStorageInterface $storage
@@ -15,7 +16,7 @@ class LeakyBucketStrategy implements RateLimitStrategyInterface {
         // 更新当前请求数，漏掉的请求数从总数中减少
         $currentCount = max(0, $currentCount - $leakRate * $timePassed);
         
-        // 判断是否还能继续处理请求
+        // 判断是否还能继续处理请求，比较 curWater < bucketSize
         if ($currentCount < $limit) {
             $storage->set($key, $currentCount + 1);
             $storage->setLastRequestTime($key, time());
