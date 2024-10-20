@@ -1,5 +1,13 @@
 {
     "require-dev": {
         "phpunit/phpunit": "^9.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "PHPRateLimiter\\": "src/"
+        }
+    },
+    "require": {
+        "predis/predis": "^2.2"
     }
 }

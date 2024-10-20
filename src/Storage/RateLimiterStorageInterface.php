@@ -1,5 +1,5 @@
 <?php
-namespace RateLimiter\Storage;
+namespace PHPRateLimiter\Storage;
 
 interface RateLimiterStorageInterface {
     public function get(string $key): int;

@@ -1,7 +1,7 @@
 <?php
-namespace RateLimiter\Strategy;
+namespace PHPRateLimiter\Strategy;
 
-use RateLimiter\Storage\RateLimiterStorageInterface;
+use PHPRateLimiter\Storage\RateLimiterStorageInterface;
 
 interface RateLimitStrategyInterface {
     public function isAllowed(
